@@ -27,7 +27,7 @@ jobs:
             throw "ActionsV.vcxproj tidak ditemukan"
           }
 
-          msbuild $project.FullName /m /p:Configuration=Release /p:Platform=Win32
+          msbuild $project.FullName /m /p:Configuration=Release /p:Platform=x64
 
       - name: Upload build output
         uses: actions/upload-artifact@v4
