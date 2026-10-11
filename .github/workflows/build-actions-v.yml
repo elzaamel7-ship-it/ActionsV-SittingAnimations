@@ -13,7 +13,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Locate project
+      - name: Find Visual Studio MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build ActionsV
         shell: pwsh
         run: |
-          Get-ChildItem -Recurse -Filter ActionsV.vcxproj | Select-Object FullName
+          $project = Get-ChildItem -Recurse -Filter ActionsV.vcxproj |
+            Where-Object { $_.FullName -notmatch '\\packages\\' } |
+            Select-Object -First 1
+
+          if (-not $project) {
+            throw "ActionsV.vcxproj tidak ditemukan"
+          }
+
+          msbuild $project.FullName /m /p:Configuration=Release /p:Platform=Win32
+
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: ActionsV-SittingAnimations
+          path: |
+            **/ActionsV.asi
+            **/ActionsV.ini
+          if-no-files-found: error
