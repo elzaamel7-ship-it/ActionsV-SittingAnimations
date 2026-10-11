@@ -1,0 +1,26 @@
+ACTIONS V - SITTING ANIMATIONS
+Build otomatis tanpa memasang Visual Studio di PC Anda
+====================================================
+
+PENTING: ZIP ini berisi SOURCE yang sudah dimodifikasi dan workflow build otomatis.
+Ini BELUM berisi ActionsV.asi hasil kompilasi baru. File ASI yang ada di folder bin/Release
+masih binary asli dari proyek sumber, jadi JANGAN dipakai sebagai versi hasil modifikasi.
+
+Cara mendapatkan hasil build lewat GitHub Actions:
+1. Masuk ke https://github.com dan login / buat akun jika belum punya.
+2. Buat repository baru (misalnya ActionsV-SittingAnimations). Untuk memudahkan, jadikan Public
+   atau Private sesuai keinginan; jangan menambahkan README/license/gitignore otomatis.
+3. Ekstrak ZIP ini di PC. Buka repository baru itu, pilih Add file > Upload files.
+4. Unggah seluruh isi folder ActionsV-ScriptHookV-main, termasuk folder tersembunyi .github.
+   Folder .github/workflows/build-actions-v.yml harus ada di repository agar workflow terdeteksi.
+   Jika browser tidak mengikutkan folder tersembunyi, unggah workflow tersebut lewat Add file > Create new file
+   dengan path .github/workflows/build-actions-v.yml dan salin isi file dari ZIP.
+5. Klik Commit changes. Buka tab Actions, pilih workflow “Build ActionsV Sitting Animations”, lalu Run workflow.
+6. Tunggu sampai job selesai. Jika hijau/success, buka run itu, bagian Artifacts, unduh
+   ActionsV-SittingAnimations-GTA5-Legacy.zip.
+7. Ekstrak artifact. Salin ActionsV.asi dan ActionsV.ini ke folder utama GTA V Legacy
+   (folder yang sama dengan GTA5.exe), setelah membuat backup file lama. ScriptHookV diperlukan.
+
+Jika workflow gagal (merah), jangan pasang binary lama sebagai pengganti. Buka log build dan kirimkan
+log error kepada saya supaya bisa diperbaiki. Saya belum bisa menguji mod ini di dalam game, dan
+scenario/animasi yang tersedia dapat berbeda menurut posisi karakter dan build GTA V.
