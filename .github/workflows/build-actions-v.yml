@@ -1,0 +1,19 @@
+
+name: Build ActionsV Sitting Animations
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Locate project
+        shell: pwsh
+        run: |
+          Get-ChildItem -Recurse -Filter ActionsV.vcxproj | Select-Object FullName
